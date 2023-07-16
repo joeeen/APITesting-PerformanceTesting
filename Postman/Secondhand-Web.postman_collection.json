@@ -1,0 +1,4617 @@
+{
+	"info": {
+		"_postman_id": "be1962c8-bb46-47d5-aefa-e7d5cfc7fe93",
+		"name": "Secondhand - Web",
+		"description": "Binar Academy Gold Challenge by Joanna\n\nSecondhand Web\n\nWebsite:\n\n[https://secondhand.binaracademy.org/](https://secondhand.binaracademy.org/)\n\nAPI Documentation:  \n[https://secondhand.binaracademy.org/api-docs/index.html](https://secondhand.binaracademy.org/api-docs/index.html)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24581176"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Registration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function randomString(minValue, maxValue, dataSet = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ') {\r",
+									"    if (!minValue) {\r",
+									"        minValue = 7;\r",
+									"        maxValue = 10;\r",
+									"    }\r",
+									"\r",
+									"    if (!maxValue) {\r",
+									"        maxValue = minValue;\r",
+									"    }\r",
+									"\r",
+									"    let length = _.random(minValue, maxValue),\r",
+									"        randomString = \"\";\r",
+									"\r",
+									"    for (let i = 0; i < length; i++)\r",
+									"        randomString += dataSet.charAt(Math.floor(Math.random() * dataSet.length));\r",
+									"    return randomString;\r",
+									"}\r",
+									"\r",
+									"pm.variables.set('email', randomString() + \"gmail.com\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"name\": \"User Pertama\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"123456\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base.url}}/users.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"users.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Registration with valid credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"name\": \"Seller One\",\r\n    \"email\": \"sellerone@gmail.com\",\r\n    \"password\": \"seller\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/users.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:08:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTUwIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2MTQzMzM3LCJleHAiOjE2ODczNTI5MzcsImp0aSI6Ijk5Yzg1Zjc4LTAyMjQtNDMzMS04ZDUzLWY1Yzg3YzZhNGViMiJ9.sjPWkEdrqFD2rmpyvTibFHNmZNKDB6aojiG6hH9PBus"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37cae4d347e9e89da93b0c571d897894\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=KqaUF9a08DBrvHwD%2Fsn8C48XwmhLyfpPFdyXRmPayu9sIP6qp6RtdOmfDSQbaaxpa5FwfhsnEI6%2Boa2%2FiPR9FytUKQuoo22IsgxQG1gsCJSMRAOUSq8EkUJyVYsGXi2lH51Dt2M29llwTaDNlzNli2DG9hE0S8LdE0Aq0HCnqQw7YtVaR%2BtGhXhcDwiTJEokjKN5MAMI8C9fqoigdXAlE5AJDi0gxm0F8O1GidJ6RNJgkveRmoM0gIAaNVVirSXAyX%2Bu%2FW1MYONAdu3eyBZLZiEGv3aizkU9%2BJWaerXMvSkXnU7fm3aYky3wt49VdRQZk5Qqp6CreTcul1InFYefV3RuZerthRBfvUMSsCY4NTtYnr0yOjJgyonay7YUO5vFujtPDKgXQgIXidWOqa6QtSw7XllMEKY73UPFXV3MdNAPyMi3TK9ztUNbLLc%3D--svJ7OnFXNQR8jvO1--Gf1rhPjZ9JqlRdbeRSwDeA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8afa5836-4787-465f-91cd-8c045791dc6a"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.291806"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 6150,\n        \"name\": \"Seller One\",\n        \"email\": \"sellerone@gmail.com\",\n        \"phone_number\": null,\n        \"address\": null\n    },\n    \"session\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTUwIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2MTQzMzM3LCJleHAiOjE2ODczNTI5MzcsImp0aSI6Ijk5Yzg1Zjc4LTAyMjQtNDMzMS04ZDUzLWY1Yzg3YzZhNGViMiJ9.sjPWkEdrqFD2rmpyvTibFHNmZNKDB6aojiG6hH9PBus\"\n    }\n}"
+						},
+						{
+							"name": "Registration with registered email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"name\": \"User Pertama\",\r\n    \"email\": \"userpertama@gmail.com\",\r\n    \"password\": \"PASSword1\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/users.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users.json"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 06 Jun 2023 13:49:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "3abfe2ba-9b4d-4b67-b336-b6c9fa579823"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.284630"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"email\": [\n            \"has already been taken\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Registration with blank name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"name\": \"\",\r\n    \"email\": \"{{randomString}}@gmail.com\",\r\n    \"password\": \"123456\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/users.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users.json"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 04:41:44 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "42ac42a6-7789-4cce-8dd6-48d30a18c888"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.285843"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"name\": [\n            \"can't be blank\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Registration with blank email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"name\": \"User Pertama\",\r\n    \"email\": \"\",\r\n    \"password\": \"123456\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/users.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users.json"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 04:41:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "cb15d286-f641-41c9-8b2a-3ac8c6f683a9"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.283920"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"email\": [\n            \"has already been taken\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Registration with blank password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"name\": \"User Pertama\",\r\n    \"email\": \"{{randomString}}@gmail.com\",\r\n    \"password\": \"\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/users.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 04:43:12 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3MTY3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2NDU4NTkyLCJleHAiOjE2ODc2NjgxOTIsImp0aSI6IjYwOWNhYWQzLTFlNzgtNGNmNi05NmFjLTgxNTA2NmE1YjhjNCJ9.vtoYEBRsK2uXvwkcui5CPc8UAIsBmYBqfgKmVZ-QXjg"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"afecaf0e7be9e90fb07aebf8ae989b1b\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=8%2B%2B0y8Fp5gUp3JZFEryTKp%2BHTRcEfhmEYJSGIFgF4v9%2F2kRWHZomjHhhBfb2D0UlxQqBsmLTK%2BjJ3GFMgAGO6Q89mHwLHwdCEh18t2duKSDUYF2PrkTz%2BYE90gDjajYwpF2gKhJkKGVzK2r5bEvrMhL2NV%2BnKQnInir09IbuBGvTcyTtcT%2B1bk6srzPkTxfTqRwDmOEHCAPykuSizl6gXFTph0W8srd7BHzSWHFizqD86oGgrA5vqlewv2lisC6x0rFsaQcz0oDMZQ%2BoXSrrEl8Buys%3D--sZ0ElCc9WSMythmd--5eGOkmKEIt1nxqHvNtmzoQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "d5d1189a-2ad9-4f2d-b90c-5a50cf533493"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.019940"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 7167,\n        \"name\": \"User Pertama\",\n        \"email\": \"tvluhft@gmail.com\",\n        \"phone_number\": null,\n        \"address\": null\n    },\n    \"session\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3MTY3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2NDU4NTkyLCJleHAiOjE2ODc2NjgxOTIsImp0aSI6IjYwOWNhYWQzLTFlNzgtNGNmNi05NmFjLTgxNTA2NmE1YjhjNCJ9.vtoYEBRsK2uXvwkcui5CPc8UAIsBmYBqfgKmVZ-QXjg\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"var token = jsonData.session.token;\r",
+									"postman.setEnvironmentVariable(\"token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"seller\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base.url}}/users/sign_in.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"users",
+								"sign_in.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"email\": \"sellerone@gmail.com\",\r\n    \"password\": \"seller\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/users/sign_in.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users",
+										"sign_in.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:17:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTUyIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2MTQzODQxLCJleHAiOjE2ODczNTM0NDEsImp0aSI6ImU5ZGQ4MzQxLTUxMDYtNGY1OC1iM2Y3LTYxMWRjNTQ2NGZlMCJ9.yBoW2X7PRhXsNEs3hCF_rDUrA19LTpRqBNQuY5yUL3I"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"08b8552cb8ba091110f3cc2649122f7d\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=TxPv%2B6xVabBsOLN4sDGfiUcKG49qrfmLejbWbhGtmO3gR64vYddTBg9Ymb1Quly1TkA2D%2FlHrhomYbFoK%2Bur%2BGGiJaEl7oEbE%2BEu3q5LdEV%2FC38iCzaoothlPLqpTq%2BIgg%2FLbptpPezlh9kEg%2BQfPNmcIt5bGgTz9PL1cYTx9CccPvA1gyXpn4YwH9BvAlZcrnFVm%2Bb2%2F%2BLc%2BP%2BwspDHuTHcBZ4SEVywPccyLzLb7ilKW7mYWm%2Bt9%2FMhupt3%2B1sTROlmiHoMZzvVaCDOUoSLE%2Bbzmz%2Bt4bin5hgRyvCeEMP4DkScXis27bSXlrBhR9J66dnN7eeOek9VqHR5wY0ZEKx5lo294Vocnk4ILShBbFkZxCRNJNs4K8N7YCfq6GIw6jxM4rU5QZLJD45FOX1HWAidETNIpXD%2B7ows%2FhV44%2FcC0CYvGeXbFEZAw4A%3D--FsIAJE1dkK4%2F5yAe--82xIDH36sJZGmqJUvnDeiQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "519ce9be-100d-4636-95e1-4578f7f5f5f4"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.016022"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 6152,\n        \"name\": \"Nama User\",\n        \"email\": \"buyerone@gmail.com\",\n        \"phone_number\": \"0812345678901\",\n        \"address\": \"Jl. jalanan blok A No. 1\",\n        \"city\": {\n            \"id\": 1,\n            \"name\": \"Solo\"\n        },\n        \"avatar\": {\n            \"filename\": \"profile 1.jpg\",\n            \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzg1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--216d63b1274b2f537cdfbcf74469a5047320ac3f/profile%201.jpg\"\n        }\n    },\n    \"session\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTUyIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2MTQzODQxLCJleHAiOjE2ODczNTM0NDEsImp0aSI6ImU5ZGQ4MzQxLTUxMDYtNGY1OC1iM2Y3LTYxMWRjNTQ2NGZlMCJ9.yBoW2X7PRhXsNEs3hCF_rDUrA19LTpRqBNQuY5yUL3I\"\n    }\n}"
+						},
+						{
+							"name": "Login with blank email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"email\": \"\",\r\n    \"password\": \"seller\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/users/sign_in.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users",
+										"sign_in.json"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 04:44:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "de09c2b0-e09e-46bc-997d-d4cad29bed10"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.004477"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"You need to sign in or sign up before continuing.\"\n}"
+						},
+						{
+							"name": "Login with blank password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"email\": \"sellerone@gmail.com\",\r\n    \"password\": \"\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/users/sign_in.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users",
+										"sign_in.json"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 04:45:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "4460710a-4920-48f4-b188-61fcb90963ec"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.003974"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Invalid Email or password.\"\n}"
+						},
+						{
+							"name": "Login with incorrect password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"email\": \"sellerone@gmail.com\",\r\n    \"password\": \"wrong\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/users/sign_in.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users",
+										"sign_in.json"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 04:45:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "9c9b9a20-641c-4e05-a01c-9411050402f2"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.284966"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Invalid Email or password.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profiles",
+			"item": [
+				{
+					"name": "Update Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Access_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user[name]",
+									"value": "Seller editted",
+									"type": "text"
+								},
+								{
+									"key": "user[phone_number]",
+									"value": "0812345624242",
+									"type": "text"
+								},
+								{
+									"key": "user[address]",
+									"value": "Jl. alamat baru blok A No. 1",
+									"type": "text"
+								},
+								{
+									"key": "user[city_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "user[avatar]",
+									"type": "file",
+									"src": "produk.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base.url}}/profiles.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"profiles.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update profile successful",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[name]",
+											"value": "Nama User",
+											"type": "text"
+										},
+										{
+											"key": "user[phone_number]",
+											"value": "0812345678901",
+											"type": "text"
+										},
+										{
+											"key": "user[address]",
+											"value": "Jl. jalanan blok A No. 1",
+											"type": "text"
+										},
+										{
+											"key": "user[city_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "user[avatar]",
+											"type": "file",
+											"src": "/C:/Users/Joanna/Downloads/profile 1.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/profiles.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"profiles.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:16:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c74f474bf45c57c2aa73e943adce8bd3\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=dQ%2FJWUKi9B7XTb0F3MjXx%2BgSAlmNFW%2FIKKAgB1qM6GLm6z8OYnlSJLa6DXMMld8bn9sutycmZJD%2FIenFpH%2FybJSsq9Up71G4mQcTCIBNhp99nP%2FR97iPkY7cET79sJrRcRnQXdqvNFK3D6omWhxSecs101wWYLjgj0IsDrH%2F6YV09HEjG31fl4Sp3vFOjIGU%2FaX%2FHAxD5xMvUbn4xtlI1beU6zyJqv%2Fnq%2FZIM7v0bOgZbTazAkQd62McaLq2po5pxq6Mr%2FTOzQZNFRhf0wc8%2BZqQ6J0T%2BUmXTWuc%2FcxeBU0g%2FGB3nMoPoSfVmkh08LPkleQ2vxw62AMTnGloZ1iiqTtc1bOUTOn96uGgvss0FCwveroi%2BxjlOFOEH%2BWAAEeZvRI6SSkj2cZzuh1275QV%2F9nrjf4NsAh3TR%2FpCGYMpihTiUa48%2FQEhSFEgKQ%3D--wCGMnQezijj0YD2l--mZrm8%2Fn4Z48ooPiO7nJ%2BmA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "b9220877-0e21-413c-af26-512a884f12d1"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.887889"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 6152,\n        \"name\": \"Nama User\",\n        \"email\": \"buyerone@gmail.com\",\n        \"phone_number\": \"0812345678901\",\n        \"address\": \"Jl. jalanan blok A No. 1\",\n        \"city\": {\n            \"id\": 1,\n            \"name\": \"Solo\"\n        },\n        \"avatar\": {\n            \"filename\": \"profile 1.jpg\",\n            \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzg1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--216d63b1274b2f537cdfbcf74469a5047320ac3f/profile%201.jpg\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base.url}}/profiles.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"profiles.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base.url}}/profiles.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"profiles.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:14:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a784928ffc2c17e2e9d82ed568dae134\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=YYJpNfp8ODHxSOKkyaboTEBgN1kGrywHfaJbCfe%2BHWFqXuxHVvpis0Eahq1frxwfmO74QsaptZSm8FU5%2BTfnFvHUpN6%2BAqtEaXdixF36pWRcdbEC1h1F1s2oJ1vAizjEwYQaOnQ1SVe9%2FKWNZpqpW4DbBUYb%2BRL1k7BHc59YmqR05m5eQ7Ylu3adIDetcznd1clXvWPx2yLlOIUakDi0oVpXQUaQ5Sjbfa3BEp4kATnAOp7LHUsAV8VKGlXCUxxSgT4su83j4MzsdsbCidJwseV%2F%2Ba5FY9UYCmxXKFG6zNt0Jqpv%2FwtAuBPrIUgVBpEqa69zqrfEMDKHs1L53aMgifMfJ%2FDEB0nIDUkE8eAvnEru3DcNCrbyNI3jPWgqUcNDtUlIvFA3uuPBjHx%2BInH0eDEJpDZd%2FAepsvgq3h%2FFE0iBiWv%2FcPOj56SQxgs%3D--tnPvdMBtMnKahQ89--A9n6%2Bf9LAOIAhiOrc%2BffZQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "c071bb21-fe15-4d50-84be-84f4e8f0cc63"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.009061"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 6152,\n        \"name\": \"Buyer One\",\n        \"email\": \"buyerone@gmail.com\",\n        \"phone_number\": null,\n        \"address\": null\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "List Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base.url}}/categories.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"categories.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base.url}}/categories.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"categories.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 12:41:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5411b7f44637465231bc27d78e1bb8ca\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "c7027195-d701-4066-bc35-facaa677c191"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.006564"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"categories\": [\n        {\n            \"id\": 1,\n            \"name\": \"Hobi\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/1\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Kendaraan\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/2\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Baju\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/3\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Elektronik\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/4\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Kesehatan\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/5\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base.url}}/categories/2.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"categories",
+								"2.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get category by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base.url}}/categories/:id.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"categories",
+										":id.json"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:17:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20d172a4eba0647c93f229da087081a8\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8e9ca45d-d6ec-461a-88c3-9a77cd253535"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.006701"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"category\": {\n        \"id\": 1,\n        \"name\": \"Hobi\",\n        \"url\": \"https://secondhand.binaracademy.org/categories/1\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Offers",
+			"item": [
+				{
+					"name": "Create Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"var offerid = jsonData.offer.id;\r",
+									"postman.setEnvironmentVariable(\"offerid\", offerid);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"offer\": {\r\n    \"price\": 10002224,\r\n    \"to_id\": 7217,\r\n    \"product_id\": 3307\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base.url}}/offers.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"offers.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create offer successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "access_token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"offer\": {\r\n    \"price\": 1000,\r\n    \"to_id\": 6150,\r\n    \"product_id\": 2148\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/offers.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"offers.json"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:16:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Location",
+									"value": "https://secondhand.binaracademy.org/offers/1843"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9e9ac41467df41896ff390647a0884e3\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=iKVMe%2FiZao9ARASPXJ3OZ5HHMZXw2%2FPD2oM9J6AHdwyoAHgxEZ0xAhVAuDOuOWVI8NX2qYcbbSEuKpqgHHGTiJNBLiDVKfdQ5bXF507fycs3N4QE4MVUZekVhYqJk76QwTHKISAHAi3lOST294xa3CebGOWUfjEMZbEB7Pj1j2W%2BwX%2B%2Fb9nEgR3qTh1xF0dZS3rjhIEtDV5A2%2FF5KitHRmh96e22qBVRWx8r2iqK6%2BZE8%2FTg8%2FbmgF75Cw2d6Ys5qsHoD%2F%2BG5XD%2BkdrYwbDh%2F0o0QbxEKRvwVs7oJcIivQiNADPCr9Tjr3EkTQ132QD5qvaAI34B6jmMYu1Ycu%2Fd%2B%2FhXjwfVc%2BJMBdN8I2FM0ZF8cjQA3qIVn6erf5HXalXoaK1GV2jl1aGBY8WKq%2FxlpnFJkCWd6c1gF%2BiSQh218kcaw%2BvZPELSZq8SCyc%3D--sm9xS3Dg9uqtn6R5--Y2m8MtXvnQDA13TE%2F1fWEA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "345d7b9f-0e1d-4190-994e-ce2245128c70"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.061608"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"offer\": {\n        \"id\": 1843,\n        \"price\": 1000,\n        \"status\": \"initiated\",\n        \"created_at\": \"2023-06-07T13:16:39.271Z\",\n        \"updated_at\": \"2023-06-07T13:16:39.271Z\",\n        \"product\": {\n            \"id\": 2148,\n            \"name\": \"Product one edited\",\n            \"price\": 350000,\n            \"description\": \"edited\",\n            \"category_id\": 1,\n            \"user_id\": 6150,\n            \"created_at\": \"2023-06-07T13:11:46.076Z\",\n            \"updated_at\": \"2023-06-07T13:16:39.277Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/2148.json\",\n            \"user\": {\n                \"id\": 6150,\n                \"name\": \"Seller One\",\n                \"email\": \"sellerone@gmail.com\",\n                \"phone_number\": \"1\",\n                \"address\": \"a\",\n                \"city\": {\n                    \"id\": 2,\n                    \"name\": \"Jogja\"\n                },\n                \"avatar\": {\n                    \"filename\": \"profile 1.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3M1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aeb602538c73d51f4a5dde8ba6a369f808518b08/profile%201.jpg\"\n                }\n            },\n            \"images\": []\n        },\n        \"to\": {\n            \"id\": 6150,\n            \"name\": \"Seller One\",\n            \"email\": \"sellerone@gmail.com\",\n            \"phone_number\": \"1\",\n            \"address\": \"a\",\n            \"city\": {\n                \"id\": 2,\n                \"name\": \"Jogja\"\n            },\n            \"avatar\": {\n                \"filename\": \"profile 1.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3M1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aeb602538c73d51f4a5dde8ba6a369f808518b08/profile%201.jpg\"\n            }\n        },\n        \"from\": {\n            \"id\": 6152,\n            \"name\": \"Nama User\",\n            \"email\": \"buyerone@gmail.com\",\n            \"phone_number\": \"0812345678901\",\n            \"address\": \"Jl. jalanan blok A No. 1\",\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"Solo\"\n            },\n            \"avatar\": {\n                \"filename\": \"profile 1.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzg1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--216d63b1274b2f537cdfbcf74469a5047320ac3f/profile%201.jpg\"\n            }\n        }\n    }\n}"
+						},
+						{
+							"name": "Create offer without loging in",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"offer\": {\r\n    \"price\": 100024,\r\n    \"to_id\": 6018,\r\n    \"product_id\": 2220\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/offers.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"offers.json"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 04:40:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8884ff40-7ef5-4672-89a2-f282bb4c5e75"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.004707"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"You need to sign in or sign up before continuing.\"\n}"
+						},
+						{
+							"name": "Create offer without completing profile",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "access_token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"offer\": {\r\n    \"price\": 1000,\r\n    \"to_id\": 6150,\r\n    \"product_id\": 2148\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/offers.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"offers.json"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:14:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=zP9E15K0QGnzER%2FXJC1jJxLIkqOBdZ0a0ygbPkLhn9jD0I%2F1xJ%2FOxZfHBVghCnIeLhg4GIUQO%2Bos3oXZdmKBk4LfPkGdJ4wFJpWQqoGn3%2FomlqjHyaHdtzzSZvgW0bXCkBKZJzZ9OYMFzDiMPOn0zUfW6F0HW41jcxK%2FFws3LPNUhD7Jz7ho58mqvKrFpaZpb9fNsuyfNWl9sXrg4RmU1o5hs4HKn90uftAP%2FiTGDFWZdaNN9k33k9DI01jHuH5dAvPgKX1cPAzpJijo8%2FueApfJHkvt2%2FvOjx6SDTFV9QkQ%2BZETZnbLPWUtaHm8qIjwRMJ0Smql2qXMKM%2FjTqtB64Zcvve%2F5bL7XUwgYdSvoeIrMFio5SrSiJtH1roaBDr255cjngyLaxDWAPEvb03i%2FtyqZMcg4QGcFtZ3M0cfkdQYF%2Bcq8P8CXqKu%2BmI%3D--wamLdqFHsMV96%2FEE--4uLKQcrxuPG%2B%2F3pPo0ESsQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "ae7cd1dc-9382-4376-b54e-29a03a576b61"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.009753"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"profile\": [\n            \"is not completed\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Offers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base.url}}/users/:userid/offers.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"users",
+								":userid",
+								"offers.json"
+							],
+							"variable": [
+								{
+									"key": "userid",
+									"value": "6150"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Offers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "access_token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base.url}}/users/:userid/offers.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"users",
+										":userid",
+										"offers.json"
+									],
+									"variable": [
+										{
+											"key": "userid",
+											"value": "6150"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:07:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"075c58a96672fc2f6ee3f91318a94ed4\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=eB2Nka0FYOQLRvT3UOA5dZfgb9m97nTr2r8GwbvtlowsFINbBD1mFGRx9gZNt%2BVuVEPFKF8aBHBgtULjaqLvPhbbKlAPrQmAqXQN6S7wXT7KnOytCvVg5cgh5dbjeMIPAf63yTdebt1qjUBx4guMERB%2FbcMASZMNRvSDe08VspjZ5W6cs0z%2By1dKz1LCiOngEWqSMFs9%2Fhel9gwj952Yg%2BXw3x%2F9aHIkkIGevhruU%2F1pRLZXmiYxKcTa%2BjI9aWluUm%2BSr4yuuPAF9j2zuAxQA7z%2FsxlHwCx%2BDk%2Fd9zeeWY3Bx6O%2B28woo5BZpb%2BNBiVQlM%2BRtUGlILK7Fqts--v%2Bj0DP3Zole68gO%2B--Pz09E37u%2BcrWWGJxgLlSuQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "b23b56e8-2307-4ed6-8974-e2fc0d5b8d03"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.023321"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"page_next\": null,\n        \"page_previous\": null,\n        \"page_size\": 10,\n        \"page_count\": 1,\n        \"total\": 0\n    },\n    \"offers\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"offer\": {\r\n    \"status\": \"accepted\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base.url}}/offers/{{offerid}}.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"offers",
+								"{{offerid}}.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update offer status to accepted successful",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "access_token",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"offer\": {\r\n    \"status\": \"accepted\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base.url}}/offers/:id.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"offers",
+										":id.json"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1843"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:54:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Location",
+									"value": "https://secondhand.binaracademy.org/offers/1843"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e62382d342213c8e96d1fc5a35540307\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=kI9zc%2FldjSfoHMlv7voZBa8ugpkn3yFZf6GPHbiaxxBb%2FQxVAdZxlInQ%2FEEld0qYe4n2SU6yjnNPpHEn5lz8ucLrZj7UvVppHO6syhADjTtxAFjrYky5WTOM18N4tdh0jXG2gBG9KShdrCDq6JxCl2cMB%2FA%2BWkcp5DvjidaZPSZDgsUnKfJGweVLJLAXh91RIaWIOJGDMBY574dbwUbjbeMYf%2BdytUljs%2BhQ%2FZX7oqHEcFeeNrIUXJI3Qql8RhS6ihsof1U8rGpXaWL7T8pMWDp5%2FIOCwWlT2OGfDB8N5q%2F02c9zAAFEdS02OofZ9cXkbJ1a8iXnkczB5Yi4HFIRJE9wZsiwrdZ6b%2Bd7nKqWJeiPqY5VNm6klIWo7T8v5omOzWtCUYWXVbPHmursdpIqaIP%2BCesOoLkkNxtoQp2viDGPpoqomgPhO4519xM%3D--vHDh%2FsI7FxiWnH5%2F--nDnCTyx0jIhaQpvwFPyfjg%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "07c0d1ee-f45e-461a-875a-01def887ff3a"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.028273"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"offer\": {\n        \"id\": 1843,\n        \"price\": 1000,\n        \"status\": \"accepted\",\n        \"created_at\": \"2023-06-07T13:16:39.271Z\",\n        \"updated_at\": \"2023-06-07T13:54:02.859Z\",\n        \"product\": {\n            \"id\": 2148,\n            \"name\": \"Product one edited\",\n            \"price\": 350000,\n            \"description\": \"edited\",\n            \"category_id\": 1,\n            \"user_id\": 6150,\n            \"created_at\": \"2023-06-07T13:11:46.076Z\",\n            \"updated_at\": \"2023-06-07T13:16:39.277Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/2148.json\",\n            \"user\": {\n                \"id\": 6150,\n                \"name\": \"Nama User\",\n                \"email\": \"sellerone@gmail.com\",\n                \"phone_number\": \"0812345678901\",\n                \"address\": \"Jl. jalanan blok A No. 1\",\n                \"city\": {\n                    \"id\": 1,\n                    \"name\": \"Solo\"\n                },\n                \"avatar\": {\n                    \"filename\": \"profile 1.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3M1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aeb602538c73d51f4a5dde8ba6a369f808518b08/profile%201.jpg\"\n                }\n            },\n            \"images\": []\n        },\n        \"to\": {\n            \"id\": 6150,\n            \"name\": \"Nama User\",\n            \"email\": \"sellerone@gmail.com\",\n            \"phone_number\": \"0812345678901\",\n            \"address\": \"Jl. jalanan blok A No. 1\",\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"Solo\"\n            },\n            \"avatar\": {\n                \"filename\": \"profile 1.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3M1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aeb602538c73d51f4a5dde8ba6a369f808518b08/profile%201.jpg\"\n            }\n        },\n        \"from\": {\n            \"id\": 6152,\n            \"name\": \"Nama User\",\n            \"email\": \"buyerone@gmail.com\",\n            \"phone_number\": \"0812345678901\",\n            \"address\": \"Jl. jalanan blok A No. 1\",\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"Solo\"\n            },\n            \"avatar\": {\n                \"filename\": \"profile 1.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzg1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--216d63b1274b2f537cdfbcf74469a5047320ac3f/profile%201.jpg\"\n            }\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"var productid = jsonData.product.id;\r",
+									"postman.setEnvironmentVariable(\"productid\", productid);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product[name]",
+									"value": "Laptop",
+									"type": "text"
+								},
+								{
+									"key": "product[price]",
+									"value": "1231",
+									"type": "text"
+								},
+								{
+									"key": "product[description]",
+									"value": "deskripsi",
+									"type": "text"
+								},
+								{
+									"key": "product[status]",
+									"value": "published",
+									"description": "draft/published. Products with draft status wont be listed in GET List Products",
+									"type": "text"
+								},
+								{
+									"key": "product[category_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "product[images]",
+									"type": "file",
+									"src": "produk.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base.url}}/products.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"products.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create product successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Access_token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Product one",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "250000",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "First product",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "/C:/Users/Joanna/Downloads/laptop.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:11:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Location",
+									"value": "https://secondhand.binaracademy.org/products/2148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"78feb3b9d080d8d0e79608337890cd98\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=DrUTM1JtxbB7gblTGqxcJPD6z4HbC2%2B09EuAKj%2B0YVMlYFsQPZCvDwcr39uTEWRYb96etpLNntTTFpO4gO91UMk0X201%2Bdck5XVnT9aGV2iJCCN53i10uvBOA0Wpxw19mHtRtAM4hTuvpf1fpc3PF1UxI9DiFd4jWtn4zqj0s2dwDoAO5WYyxJ2gI%2B1yTnOcoIA7tcNJkM6XzrX1xILjDmlyYd5k17G3874wvkWjuKhlNcWq17x6rlrlUCVqUW5d3MLkCWdAXrnnzp27VVnP0zXWMwlJDw5%2F6FxMdN5eef1szfH4j0qUZPXVrw5PHGr3WRFz7hMcEmnLRKtpPev4vbL0pkTE7TMKaonoWKr4hi9PdfNPbaMHL6k3Q%2Be4k6jIAIKf%2Fh4LNxyism77lDm%2FMXcR497DK5exqXj26k75Zhc310kNKK5E9aZew0o%3D--FJGu0hy8uyO6a7Kr--rcNkpph5TtcYF3fWGpW2hw%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "d69a52ce-5527-40cd-b889-2639f3123a0e"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.033652"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"product\": {\n        \"id\": 2148,\n        \"name\": \"Product one\",\n        \"price\": 250000,\n        \"description\": \"First product\",\n        \"category_id\": 1,\n        \"user_id\": 6150,\n        \"created_at\": \"2023-06-07T13:11:46.076Z\",\n        \"updated_at\": \"2023-06-07T13:11:46.076Z\",\n        \"url\": \"https://secondhand.binaracademy.org/products/2148.json\",\n        \"user\": {\n            \"id\": 6150,\n            \"name\": \"Seller One\",\n            \"email\": \"sellerone@gmail.com\",\n            \"phone_number\": \"1\",\n            \"address\": \"a\",\n            \"city\": {\n                \"id\": 2,\n                \"name\": \"Jogja\"\n            },\n            \"avatar\": {\n                \"filename\": \"profile 1.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3M1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aeb602538c73d51f4a5dde8ba6a369f808518b08/profile%201.jpg\"\n            }\n        },\n        \"images\": []\n    }\n}"
+						},
+						{
+							"name": "Create product without loging in",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Laptop",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "1231",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "deskripsi",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"description": "draft/published. Products with draft status wont be listed in GET List Products",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "produk.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:11:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "53a1c7d6-adfc-43b6-9dae-2fd65bc1b1af"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.005794"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"You need to sign in or sign up before continuing.\"\n}"
+						},
+						{
+							"name": "Create product without completing profile",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Access_token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Product one",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "250000",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "Asus",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "/C:/Users/Joanna/Downloads/laptop.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:10:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=HN05Q5GaSkECCUIZBGcNfA27nQsQtbJjWn9dLb%2FDx00%2BdXbG8sEvol65OQ4s0DAjxfRDxYZAcAuUWNsTLoT2fQaQH7SCVGUw%2Bw96VcrJIiIrY9azeriY5BcGSnKKL2c9SZ3w7PVTwJ%2FNU5R2WxC%2B%2BUSEWthkAa6eWz9T39dXaEYxr6HsHtOUHyWO6vYXUuwHw08ahqWH5fW01X7nA3T2%2B8ybku6JnuOpnmA7D3zxbtECAnXBXR2OJcOAff26d3e%2Fw4DLMaSxODqKTqehu782U1H4pQZHLg%2BLcf%2Bsr0Kit1AphjU%2B6d1pyMjoSmLbnAKErMJM6c7x6vF7TjSRmEYAJCCseumEt4og64usXpjWisA5FR0GijwdCFt7QQie%2BzOQEaEmYZkE29AyXXleHqXWtUJ4fI9eRXkx5S38YKM6mm4G2AKCF5khXNLE0lY%3D--GiioL1RalVXR7OMk--JPoQFd%2F232bAn1PmWhRLBQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "12c7bba8-bb10-4982-b648-9cedd91b980d"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.013221"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"profile\": [\n            \"is not completed\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Create product with blank name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "250000",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "Asus",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"description": "draft/published. Products with draft status wont be listed in GET List Products",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "/C:/Users/Joanna/Downloads/laptop.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:08:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=aNeMyuvDlHU4nqgk0%2B3OODBWpNSib9Loen%2FXjUBjeCiVCmHN8SO8xuaGK8lC4qsdDuo8tPncdDE%2BfRUF0v6D%2F5LqOX%2BahiiPM6ezOPFabkdd5fhteSrU4qZHhLdHoxs4xDJVeXf12FEC90A6XQ3GelCBSubFlh1j9R5%2Flq%2BSIzkpNQc6561BdR3DU3l1FC6zI7SLY1d8GPa3BjQUpb3E%2FZHlt0%2BC9XxPKH2fmXjj3HUhvSi4Ev%2FT%2BWvVBXOlAz%2Fu8ENZ9PdYon6ezGbEKQzsC5yKIX10Gb3ohhMp8DzcpB6zskiphWIgRejSQUtqGMu%2BNiiYUW%2FMEfeIUENH--iPMO7H4vEEj2EJ0k--t3PPl%2FLVAnYKvqZgYZbE0g%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "2e23cd17-b139-440e-af17-6719a52b1f0a"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.020092"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": [\n        \"can't be blank\"\n    ]\n}"
+						},
+						{
+							"name": "Create product with blank price",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Laptop",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "Asus",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"description": "draft/published. Products with draft status wont be listed in GET List Products",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "/C:/Users/Joanna/Downloads/laptop.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:08:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=Ydm%2BzD73PnIV1HOSDxPh9KPRij2eLQJ7quFGU5YraczJ1wyrcwvPTjwZWIKrR51kxscyPPTiTT015TClcCrepP1perxxDF9aUWJvBTra31tq29tpryZg7FOs7cm6qppLfEC6vkzlWrRPpM%2B3ETIDP1a9yN2kgIgBVvklyI%2F43kBIyHdwy4E8gAJZxu4NGcz4F6Ne1U5BUlhQ0TLYFoIq5oOlGI%2FuojGdH8JLTzAvubrEv%2BXLoaLhdxm4COAgSlQ5ORDkkM4SfnuDFD6QwGsnkLeqq3Ir6GeCnFNhQAfTxlLru5u%2F9FJ8u0KpYJmJPu163PTEavTe%2FCcQ2CpN--8mEQgvk93hiXK%2FSf--MJ%2BCIwdSgaEv3cDmHlnaXw%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "856455b3-9a4d-4219-92bb-6c5183a6ac60"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.017309"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"price\": [\n        \"can't be blank\",\n        \"is not a number\"\n    ]\n}"
+						},
+						{
+							"name": "Create product with blank description",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Laptop",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "1231",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"description": "draft/published. Products with draft status wont be listed in GET List Products",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "/C:/Users/Joanna/Downloads/laptop.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:09:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=ckYLf%2BIHAtPQyYcU4J1UmSAgIQB6D8oxI7OwNIl1rzB6%2F7y7WD%2FksZsFS2n320hlF8HINOhovh%2BkzMJCjT%2FAGd%2BvsRbknNGOVNrqZSdR3pPHqcwokK%2B4r8jNrmm%2B9HA7l%2BV%2Bjdd1RQSe7pNZ2kURtZ3R8XGXD3P2qugeI4g4%2FOgOrCxAeP6rSMcXjkgT6B5A3UAHFhBepCNe1OeSMNvx1V3XlAnADpzoqgTQBOtKGsoO83H2esFfs%2BWsm6QtOPSnzLQyjywFxr1%2BvP1ziSMdcB%2FgyzxPRm%2BTJQGuRaFZCq6pUz5zUk%2FidhJNgAU5NzMo9rMo28K0oMzjb7tB--6vS0DHmtWFc2LSLp--YawYcQg9Ng18tSWE61MG9A%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "6754e07f-d15f-4b1c-94c0-c10dda12d035"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.017309"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"description\": [\n        \"can't be blank\"\n    ]\n}"
+						},
+						{
+							"name": "Create product with blank status",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Laptop",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "1231",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "deskripsi",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "",
+											"description": "draft/published. Products with draft status wont be listed in GET List Products",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "/C:/Users/Joanna/Downloads/laptop.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:09:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8f9b0199-dc22-4d96-99c5-6a1fcdb90dd5"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.016686"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 500,\n    \"error\": \"Internal Server Error\"\n}"
+						},
+						{
+							"name": "Create product with blank category",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Laptop",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "1231",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "deskripsi",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"description": "draft/published. Products with draft status wont be listed in GET List Products",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "/C:/Users/Joanna/Downloads/laptop.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:10:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=HOza0w3%2Fji8nnf090gLWeLFG2SJ5bk7PB9EMtbKyInifM3d3ftlSLCCQVt5T0iBbwrQmtBkALxRAcMGl0%2BOF2DtK%2F%2Fgm%2FXLjOlOca%2BATN75HMOpwi7d2RJsybmzHJ%2BiQAkict9z5kB41SuvKub5VrIejVthbFBKA4F2Oqmj3uY64vJAecyWyOabqJhSsZrSna16c8Kvia8l0fws3StBjqc8Ir7fFZqt923hT3MZdQqxGYV7x9k9qxpaI15CZo0%2B3zGgcocbb6HSyC%2BAYDWbaawSvZlEzjDnfSB%2BHQByRg%2F%2FYpXvtH0OtP35x3ubddXg2d16ixg2e7lZzfvgr--UXNe2mSTKEcHgjdg--3vZ%2B922SVJ7XFan6O2d3oQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "77110dea-eeaf-4f23-9d4a-d71c1c0d2704"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.015108"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"category\": [\n        \"must exist\"\n    ]\n}"
+						},
+						{
+							"name": "Create product without a photo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Laptop",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "1231",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "deskripsi",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"description": "draft/published. Products with draft status wont be listed in GET List Products",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:10:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Location",
+									"value": "https://secondhand.binaracademy.org/products/2975"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d0c3aa65a9cb948e228918a4d6f67d9\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=xmZaQVmSSp2eJSNku%2BYpZgXVL7VTbFSKCrHcqIeraG9nXwjhuVpw%2FywJalZiXJ817wwKmC5XqbhZStX0P794y%2Br2lvsYTRkaiiljqunsXT2A3bY3FBQm6k3w%2FoX%2BVbkhbHl18AhsKgfbP1B7hTJmYD15jzKJ4jmHmLEc9HPq9ttwOPYjOorNub5SnDYWc3V2NlxeEKTtDkrxompS6HUEpey51Ih6tdVGnFZWNi5aWJVfvIcV4sW8yhqUUg5y0LJH1988ra6Gtgj%2ByRwpLH%2FhwCCDL0VD8GLX00l4Nc43kdhGnuUK%2BA5PlV5UJiMw8p%2F%2B8Ijrnuu6yZGdFHC5--FwiGTsKYtAs1aWME--GjtzB2BPoSaXaufhNac%2FfQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "48aa3872-f8cb-4cfc-a5dd-0bd6e70e53b3"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.035798"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"product\": {\n        \"id\": 2975,\n        \"name\": \"Laptop\",\n        \"price\": 1231,\n        \"description\": \"deskripsi\",\n        \"category_id\": 3,\n        \"user_id\": 7161,\n        \"created_at\": \"2023-06-11T03:10:33.027Z\",\n        \"updated_at\": \"2023-06-11T03:10:33.027Z\",\n        \"url\": \"https://secondhand.binaracademy.org/products/2975.json\",\n        \"user\": {\n            \"id\": 7161,\n            \"name\": \"Seller editted\",\n            \"email\": \"ynv3yoj3@gmail.com\",\n            \"phone_number\": \"0812345624242\",\n            \"address\": \"Jl. alamat baru blok A No. 1\",\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"Solo\"\n            },\n            \"avatar\": {\n                \"filename\": \"produk.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWxEIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e981094dd4ecf29171d361a5e3fc3a30ef26ca3/produk.jpg\"\n            }\n        },\n        \"images\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base.url}}/products.json?page=&category_id=&user_id=",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "category_id",
+									"value": ""
+								},
+								{
+									"key": "user_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base.url}}/products.json?page=1&category_id=3&user_id=6150",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products.json"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "category_id",
+											"value": "3"
+										},
+										{
+											"key": "user_id",
+											"value": "6150"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:12:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f32cc8c6986e003dd8baac8bb22facb5\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=FeuOwKQ%2FX%2B9AISnjtS2lcXgBiZBeDWiS8adB%2BqozgJQGvcJ9NtMWbMCkf4vUuaNduvQgqkHMgj13xFLcJIA69n1UnBOlKQRFvFxESbtWY45TX%2B59d3%2FE1%2FaMcoDLutL90SgSy6XfSm05smJMFyB5Rl6rU2JpPGZPEtqTxs1IhjQ41a%2Fy998FLEKYMfWn3OJfh7qjiAhp4OCMlGzZa6Mh12DFCFAoIpsjL9We95nIsKrWmqq38Dc1tw4xJuXc5HN4Vi2aBzUN1jjeTSiHyFO3t1gPa33skEyY3k73zGQevvYuiUuYOIsWMidvcADybdqDb%2Bn5Vi2IZX5IZnBD2jaDJxGU%2Fr%2BYlKTJKVrr9saemji3QGsyv3GMV9tHvc92D3A432vMC%2F53M%2B5tsqX7SpZ7gCNO87zuh1sfkX%2BU4K8QZtU33O0V6%2FrAmQsWiUg%3D--JMzIcfYY9vX1hSKi--RXXQIzU6zwibGUo9Lumcvg%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "34dabfa5-5d44-40e3-83a1-d0b8ae1ed2e4"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.026219"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"page_next\": null,\n        \"page_previous\": null,\n        \"page_size\": 10,\n        \"page_count\": 1,\n        \"total\": 1\n    },\n    \"products\": [\n        {\n            \"id\": 2148,\n            \"name\": \"Product one\",\n            \"price\": 250000,\n            \"description\": \"First product\",\n            \"category_id\": 1,\n            \"user_id\": 6150,\n            \"created_at\": \"2023-06-07T13:11:46.076Z\",\n            \"updated_at\": \"2023-06-07T13:11:46.076Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/2148.json\",\n            \"user\": {\n                \"id\": 6150,\n                \"name\": \"Seller One\",\n                \"email\": \"sellerone@gmail.com\",\n                \"phone_number\": \"1\",\n                \"address\": \"a\",\n                \"city\": {\n                    \"id\": 2,\n                    \"name\": \"Jogja\"\n                },\n                \"avatar\": {\n                    \"filename\": \"profile 1.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3M1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aeb602538c73d51f4a5dde8ba6a369f808518b08/profile%201.jpg\"\n                }\n            },\n            \"images\": []\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Product by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base.url}}/products/{{productid}}.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"products",
+								"{{productid}}.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get product by Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base.url}}/products/:id.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products",
+										":id.json"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2148"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:13:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"78feb3b9d080d8d0e79608337890cd98\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=DXfT6hHGhNNXa7ncs3QlZKwyC0RYJhL09%2BD482I7gtzPPO3YW%2BVW65zXSvjX6iDw0ABXNN7RBp1%2Bu%2Bvn7w%2Fpql2TWbfSX9OxpJIDIm58UOK%2FfpvFzG9LLDqb%2FBVv9uvMGR9uu5hRNicD5GsCgPnR9Mv%2Fl11PDb%2BMdfgMe7lXwN9nufiWxZy645a9syrD3mevtpBWw1%2FBaxZBrvgTwgXq4sFLkPQP5pD8DgLl0temNSn33wpSrnJc2D8fmZOON%2FvZ0mkMj%2BO1kHCB4TFHIjEXzw96mx4DI1tsUP8XZ5PT2CgxQo3OD699xlpfrvTsDJ8uk2%2B64lkX%2Fau0IwnQ4eaTGjm8eA%2FVqUQr3SuKYsNiRWc12C12V8dP%2BLMXidhAgLjC3BL0CG3EBNjcp1vWHR7ZRlH70K9Crx5Dv5aQTVXbZOpsQACuGY2b7fr25ZQ%3D--dch2Akakmv3Qjc2J--NVZQMyEN9wuZ%2FfbdyvaQcw%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "a24fb6cb-c3e0-4cfc-a1e0-378a6e86ad5f"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.020122"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"product\": {\n        \"id\": 2148,\n        \"name\": \"Product one\",\n        \"price\": 250000,\n        \"description\": \"First product\",\n        \"category_id\": 1,\n        \"user_id\": 6150,\n        \"created_at\": \"2023-06-07T13:11:46.076Z\",\n        \"updated_at\": \"2023-06-07T13:11:46.076Z\",\n        \"url\": \"https://secondhand.binaracademy.org/products/2148.json\",\n        \"user\": {\n            \"id\": 6150,\n            \"name\": \"Seller One\",\n            \"email\": \"sellerone@gmail.com\",\n            \"phone_number\": \"1\",\n            \"address\": \"a\",\n            \"city\": {\n                \"id\": 2,\n                \"name\": \"Jogja\"\n            },\n            \"avatar\": {\n                \"filename\": \"profile 1.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3M1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aeb602538c73d51f4a5dde8ba6a369f808518b08/profile%201.jpg\"\n            }\n        },\n        \"images\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product[name]",
+									"value": "Laptop ",
+									"type": "text"
+								},
+								{
+									"key": "product[price]",
+									"value": "350000",
+									"type": "text"
+								},
+								{
+									"key": "product[description]",
+									"value": "Asus ",
+									"type": "text"
+								},
+								{
+									"key": "product[status]",
+									"value": "published",
+									"type": "text"
+								},
+								{
+									"key": "product[category_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "product[images]",
+									"type": "file",
+									"src": "produk.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base.url}}/products/{{productid}}.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"products",
+								"{{productid}}.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update product successfully",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Product one edited",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "350000",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "edited",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "/C:/Users/Joanna/Downloads/laptop.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products/:id.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products",
+										":id.json"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2148"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 13:13:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Location",
+									"value": "https://secondhand.binaracademy.org/products/2148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e2561be228b54974c138586e6a81869\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=xGXQsKJjj%2BSte8X6TUxfhhG4105lTWbRlJIBt%2B2KlCYSkUw94jzCk7sFewzICt%2B4sxH1rG39DA9RmXAf%2B%2BlX3Pw92j2OJD1oT1W4hwR5C1%2B4symI2iQvvjPtVzZl8o0%2FG2qaBebTZ7czBVTN%2BYzdwYTr3KXHSRortBiqesSoDJdqD6ZXBjoSOAypCsWqR%2B%2BPToncU8fGAVGiqZW20P91yKo1Ti8%2BUmJHsLRBnSbwnrTTiKjjSkaqlnHYrGH472kgYhCcrHBu8E9Nbwyr8LofY1oLX4%2FemeYyhvvu0JsYgN3iQpIEhfTcUUU2F27fF1uddVcHDKeXpArIEj%2FbdXDmh1BNtuJq79wRA51r0AM9S5in6Z42sIi629VU%2B6xTL6lE3VStNy0nw0Ks5Y8csKm1zYTVqdzkBWmLPr%2FM8zutuIFK7ztNmYqZXnCjrlE%3D--%2FAtulzCmO%2F85uhu7--nTlzTMAIGMihlRfwtnZOgA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "1a1d07fc-ba48-4c6e-badc-dfb5f5b92e2a"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.036914"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"product\": {\n        \"id\": 2148,\n        \"name\": \"Product one edited\",\n        \"price\": 350000,\n        \"description\": \"edited\",\n        \"category_id\": 1,\n        \"user_id\": 6150,\n        \"created_at\": \"2023-06-07T13:11:46.076Z\",\n        \"updated_at\": \"2023-06-07T13:13:33.067Z\",\n        \"url\": \"https://secondhand.binaracademy.org/products/2148.json\",\n        \"user\": {\n            \"id\": 6150,\n            \"name\": \"Seller One\",\n            \"email\": \"sellerone@gmail.com\",\n            \"phone_number\": \"1\",\n            \"address\": \"a\",\n            \"city\": {\n                \"id\": 2,\n                \"name\": \"Jogja\"\n            },\n            \"avatar\": {\n                \"filename\": \"profile 1.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3M1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aeb602538c73d51f4a5dde8ba6a369f808518b08/profile%201.jpg\"\n            }\n        },\n        \"images\": []\n    }\n}"
+						},
+						{
+							"name": "Update product without loging in",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Laptop ",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "350000",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "Asus ",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "produk.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products/{{productid}}.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products",
+										"{{productid}}.json"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:49:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=fk7rKmn06HpsVa60%2BKu8aphb0f7Bpap0U8fiiaFfAfhy17gkmKPYZAHZZbPzcRPfi6bYp7RyTCqE3ymZX8slNZsJRVHXkJKvmxsM9hrfTpYmBn6ROJbJzs34c8P31LUfHa8rela3I51T6y68v2dzp5axGuh7S3NBj%2FrSGUUa4hZMCFdSZS7c74tdQx7wryW0dUcrdUdWFmzAygvLF0MKnJ8Lh3hoklR9--PSiXT2EsGT8XeBJx--C0bqrXeENhbySboEi348wA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "a09e6f92-6449-4cc6-889c-45b1713015a5"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.011950"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"You need to sign in or sign up before continuing.\"\n}"
+						},
+						{
+							"name": "Update product without completing profile",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Laptop ",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "350000",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "Asus ",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "produk.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products/{{productid}}.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products",
+										"{{productid}}.json"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:49:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=KFC9cd7obRrsuMtC4nxBVi3rDVwYmTPOxhlBVrp3e7n8Rmg4WVLGa4vWJRxxoB%2FFsX3asBpgHmC%2Buj9B%2F%2FKlPH5Phc71Fmyk0AyNGKbg65mIdMemXCakESlcTKnhxedqBxCa6sQyMeSP%2FtTInrY2kU1bbqJPr75NWTBEx%2B4SCpi6wD3m0ibFQs%2BZJfr4VhjC6y%2BDjm1PxFrfCY8W4%2FFa%2Bn6Po3bZHqXV--iNghg96G5w2LgMrY--Lcqsr6JfmdHAoSVbKTLNNQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "03dbd14d-74c3-4a97-932f-6f0a8d4b2a36"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.015386"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"profile\": [\n            \"is not completed\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Update product that is not owned",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "Laptop ",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "350000",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "Asus ",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "published",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "product[images]",
+											"type": "file",
+											"src": "produk.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base.url}}/products/{{productid}}.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products",
+										"{{productid}}.json"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:50:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=SmKFhywXEGNGzv2Jg7JgCBLHmLc4Y6ef3iKeLXtH9pl%2F63yBk0KyhJzbub4Vox8rwd0jFqfoN2HuAMhro64Af8aotAJ2IDrLWURlInuKPFyPuHOoRyAjcIKuEGH8IPl6iM3h4hRGOo82%2BNx6bAqc7FrDBuNw3kC%2FGLcefimfqz3jrZHEVb1ohSGFGJ0fdsb7I%2B3RsCSwPO7uCfc3hKSsF6jzAOTN5%2Fgs--ToP8zzCB3k0zOxX2--hziLsX5MiDVuXDuWarKUzA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "49a8eac6-2218-405a-9303-685e2a040827"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.017924"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user_id\": [\n        \"doesn't have the right to do this action\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base.url}}/products/{{productid}}.json",
+							"host": [
+								"{{base.url}}"
+							],
+							"path": [
+								"products",
+								"{{productid}}.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete product successfully",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base.url}}/products/:id.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products",
+										":id.json"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2191"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 08 Jun 2023 08:38:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=aEup4cK2b9DfiCfKQaQMWSqu105%2FSoUhhEnWCE4Hl1J7B0Fk%2BywnGnLBn5vLOJmhWaKxlL%2B8eZTjzV9j8q1BU66nNKjOErviQTvEdKZNSQXH5euOE%2FC6p9S0ys9ZzDz%2BkMzX9XyOkbuKyL6gCKfsivDQThTyyIQzS%2Fw%2BR0cNWkdjwmC7POX7UWkiBKijemA7pBvzCUpT%2F7b5%2FMCqu52Gly3ZDSqOvUIHHe2ARw9C4PP8LIbAObSW5ZX6WNrykuTJhOnQ1nv7EyTeLWFrE3yvaH1PrJaGvTHjZ1ZqQlHc1H9etE0pDuWjaSKImI91wk6eNmxRRKFwjI0ws9FZ--DplvWuGjiE2mB4oQ--6a0dwDVpxTDIZ1lgApYPXQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "090d03b9-e89d-465e-a72b-1e99af9836c2"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.014724"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Delete product that is not owned",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base.url}}/products/{{productid}}.json",
+									"host": [
+										"{{base.url}}"
+									],
+									"path": [
+										"products",
+										"{{productid}}.json"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 03:51:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=RITbRUpGRq5tp%2FxSl4WnmOrkgoQR4tYvn1j9TlLnz%2BoiV2E%2BoRedYfPrjLTOHr0gcSJkgvT7P7WEU%2B8s0L2Hn%2FqfPP3b4qae1OQ5p%2FX4GOvTT%2FKLixA3fwZvRZF9W6pC%2Bvv8cmUvA3lbHYn3oUyLmSXVxJB3f05EzDbs39kSa9vLonMojALxqzTe7onuIHJdwBofehHuvBnBifRDVpJeu%2F1ipBwnEaLn--bGBfSoWvEuEnh4eN--%2Bi0%2BRvIuJPCMiNmlzRTZJw%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "53873368-31a9-483a-bc0e-4e1a3e414d0e"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.014881"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user_id\": [\n        \"doesn't have the right to do this action\"\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
